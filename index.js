@@ -13,11 +13,7 @@ const ejs=require('ejs')
 app.set('view engine','ejs')
 app.set('views',path.join(__dirname,'views'))
 
-
-app.get('/',(req,res) => {
-   res.send("hellooo")
-
-app.get('/home', (req, res) => {
+app.get('/', (req, res) => {
    res.render('home')
 })
 app.get('/signup', (req, res) => {
