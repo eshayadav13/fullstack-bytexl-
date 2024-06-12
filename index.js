@@ -14,7 +14,8 @@ app.set('view engine','ejs')
 app.set('views',path.join(__dirname,'views'))
 
 
-
+app.get('/',(req,res) => {
+   res.send("hellooo")
 
 app.get('/home', (req, res) => {
    res.render('home')
@@ -45,7 +46,7 @@ app.post('/re',async(req,res) => {
       }
 })
 
-//Register Route
+
 app.post('/reg',async(req, res) => {
    const emailexist =  await model_cons.findOne({ email: req.body.email})
    if(emailexist)
@@ -77,7 +78,7 @@ app.post('/reg',async(req, res) => {
       }
 })
 
-//Login Route
+
 app.post('/login', async(req,res) => {
    const emailexist=  await model_cons.findOne({email:req.body.email})
 
@@ -99,6 +100,7 @@ app.get('*',(req,res) => {
    return res.send("Sorry this page is not found")
 })
 
+const PORT=process.env.PORT || 3000;
 app.listen(3000, () => {
    console.log("my server is running on 3000 port")
 })
